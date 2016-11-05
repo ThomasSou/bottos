@@ -4,7 +4,7 @@ local socket = require("socket")
 local tcp = assert(socket.tcp())
 local botname = "Brice_De_Nice"
 local ident = "Bottos"
-local gecos = "Brice, le roi de la glisse !"
+local gecos = "Brice de Nice, le roi de la glisse"
 local channel = "##aixinfo"
 
 function explode(str, div)
@@ -20,47 +20,6 @@ function explode(str, div)
     end
     return o
 end
-
-function comparer_debut(a_comparer,chaine_user,chaine_print)
-	if(chaine_user) then
-
-		if(string.lower(a_comparer) == string.lower(chaine_user)) then
-			msg(chaine_print)
-
-		end
-	end
-
-
-end
-
-
-function bot_answer(chaine_user)
-	comparer_debut(":bonjour",chaine_user[4],"Salut, ça fart ?")
-	comparer_debut(":salut",chaine_user[4],"Salut, ça fart ?")
-	
-	comparer_debut(":yo",chaine_user[4],"Salut, ça fart ?")
-	
-	comparer_debut(":plop",chaine_user[4],"Salut, ça fart ?")
-	
-	comparer_debut(":bonsoir",chaine_user[4],"Salut, ça fart ?")
-	
-	comparer_debut(":coucou",chaine_user[4],"Salut, ça fart ?")
-	
-	comparer_debut(":salut !",chaine_user[4],"Salut, ça fart ?")
-	
-	
-end
-
-
-
-
-
-
-
-
-
-
-
 function msg(s)
     if (s) then
         tcp:send("PRIVMSG " .. channel .." :".. s .." \r\n " )
@@ -70,6 +29,8 @@ function file_exists(name)
        local f=io.open(name,"r")
     if f~=nil then io.close(f) return true else return false end
 end
+
+
 
 tcp:connect(host, port);
 
@@ -91,9 +52,10 @@ while true do
             print("Opening script...")
             --print(s)
             dofile("plugins/"..string.sub(s[4],3)..".lua")
-        else bot_answer(s)
-        end
-    end
+	end
+   msg(s[4]) 
+end
+
 end
 
 tcp:close()

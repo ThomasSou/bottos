@@ -21,38 +21,15 @@ function explode(str, div)
     return o
 end
 
-function comparer_debut(a_comparer,chaine_user,chaine_print)
-	if(chaine_user) then
+function comparer_debut(chaine,chaine_comparer)
+	if(string.lower(chaine) == string.lower(chaine_comparer)) then
+		return true
+	else
+		return false
 
-		if(string.lower(a_comparer) == string.lower(chaine_user)) then
-			msg(chaine_print)
-
-		end
 	end
 
-
 end
-
-
-function bot_answer(chaine_user)
-	comparer_debut(":bonjour",chaine_user[4],"Salut, ça fart ?")
-	comparer_debut(":salut",chaine_user[4],"Salut, ça fart ?")
-	
-	comparer_debut(":yo",chaine_user[4],"Salut, ça fart ?")
-	
-	comparer_debut(":plop",chaine_user[4],"Salut, ça fart ?")
-	
-	comparer_debut(":bonsoir",chaine_user[4],"Salut, ça fart ?")
-	
-	comparer_debut(":coucou",chaine_user[4],"Salut, ça fart ?")
-	
-	comparer_debut(":salut !",chaine_user[4],"Salut, ça fart ?")
-	
-	
-end
-
-
-
 
 
 
@@ -91,7 +68,15 @@ while true do
             print("Opening script...")
             --print(s)
             dofile("plugins/"..string.sub(s[4],3)..".lua")
-        else bot_answer(s)
+        elseif ((string.lower(s[4]) == ":bonjour") or 
+                (string.lower(s[4]) == ":salut") or 
+                (string.lower(s[4]) == ":plop") or
+                (string.lower(s[4]) == ":yo" )) then
+
+            msg("Salut, ca fart ?")
+
+	elseif comparer_debut(":qui",s[4]) then
+		msg("Je suis Brice, Brice de Nice.. Mais appelle moi Brice si tu veux !")
         end
     end
 end
