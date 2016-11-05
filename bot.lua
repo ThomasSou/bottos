@@ -21,44 +21,25 @@ function explode(str, div)
     return o
 end
 
-function comparer_debut(a_comparer,chaine_user,chaine_print)
+function comparer_debut(a_comparer,chaine_user,chaine_print) -- compare the first word of user --
 	if(chaine_user) then
-
 		if(string.lower(a_comparer) == string.lower(chaine_user)) then
 			msg(chaine_print)
-
 		end
 	end
-
-
 end
 
 
-function bot_answer(chaine_user)
+function bot_answer(chaine_user) -- ask to the bot answer if one of the word in sentence is understand by him --
 	comparer_debut(":bonjour",chaine_user[4],"Salut, ça fart ?")
 	comparer_debut(":salut",chaine_user[4],"Salut, ça fart ?")
-	
 	comparer_debut(":yo",chaine_user[4],"Salut, ça fart ?")
-	
 	comparer_debut(":plop",chaine_user[4],"Salut, ça fart ?")
-	
 	comparer_debut(":bonsoir",chaine_user[4],"Salut, ça fart ?")
-	
 	comparer_debut(":coucou",chaine_user[4],"Salut, ça fart ?")
-	
 	comparer_debut(":salut !",chaine_user[4],"Salut, ça fart ?")
-	
-	
+	-- others --
 end
-
-
-
-
-
-
-
-
-
 
 
 function msg(s)
