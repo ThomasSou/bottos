@@ -2,6 +2,7 @@ function lines_from(file)
     lines = {}
     for line in io.lines(file) do
         lines[#lines +1] = line
+	
     end
     return lines
 end
